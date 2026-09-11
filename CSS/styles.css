@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* =========================================================
+   Tokens
+   ========================================================= */
+:root {
+  --bg: #0f131a;
+  --surface: #171d27;
+  --surface-raised: #1e2530;
+  --border: #2a3241;
+  --border-soft: #232b38;
+
+  --text: #e7e9ee;
+  --text-muted: #8b94a5;
+  --text-faint: #5c6577;
+
+  --accent: #d6a24a;
+  --accent-soft: rgba(214, 162, 74, 0.14);
+  --danger: #e2664f;
+  --danger-soft: rgba(226, 102, 79, 0.14);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 24px -12px rgba(0, 0, 0, 0.55);
+}
+
+/* =========================================================
+   Reset & base
+   ========================================================= */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background:
+    radial-gradient(1100px 480px at 12% -10%, rgba(214, 162, 74, 0.07), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* A quiet page heading rendered purely in CSS, anchored above the grid */
+main::before {
+  content: "Usuarios";  
+  grid-column: 1 / -1;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* =========================================================
+   Form card
+   ========================================================= */
+.form_crud {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 32px;
+}
+
+.form_crud form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form_crud div[id^="form_"] {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form_crud label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.form_crud input[type="text"],
+.form_crud input[type="password"] {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  padding: 11px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.form_crud input[type="text"]::placeholder,
+.form_crud input[type="password"]::placeholder {
+  color: var(--text-faint);
+}
+
+.form_crud input[type="text"]:focus,
+.form_crud input[type="password"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--surface);
+}
+
+/* Radio group ("Administrador?") — leading text + two toggle pills.
+   The word "Administrador" is a bare text node (not wrapped in an
+   element), so it can't be targeted directly; it inherits font/color
+   straight from #form_adm, which is set below to read like the other
+   field labels ("Nome", "Senha"). */
+#form_adm {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+#form_adm label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-raised);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+#form_adm label:hover {
+  border-color: var(--text-faint);
+}
+
+#form_adm label:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+#form_adm input[type="radio"] {
+  accent-color: var(--accent);
+  width: 15px;
+  height: 15px;
+  margin: 0;
+}
+
+.form_crud input[type="submit"] {
+  background: var(--accent);
+  color: #1a140a;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: filter 0.15s ease, transform 0.05s ease;
+}
+
+.form_crud input[type="submit"]:hover {
+  filter: brightness(1.08);
+}
+
+.form_crud input[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+/* =========================================================
+   User list
+   ========================================================= */
+.list_users {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.list_users ul {
+  list-style: none;
+  margin: 0;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  display: grid;
+  grid-template-columns: 64px 1.4fr 1.4fr 1fr auto auto;
+  align-items: center;
+  gap: 8px 20px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.list_users ul:hover {
+  border-color: var(--border);
+  background: var(--surface-raised);
+}
+
+.list_users li {
+  font-size: 14px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* First li = id, styled as a quiet tag */
+.list_users li:nth-child(1) {
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+}
+
+/* "Nome:" / "Senha:" / "Administrador:" prefixes de-emphasized via muted label color */
+.list_users li:nth-child(2),
+.list_users li:nth-child(3),
+.list_users li:nth-child(4) {
+  color: var(--text-muted);
+}
+
+.list_users li:nth-child(2)::selection,
+.list_users li:nth-child(3)::selection {
+  background: var(--accent-soft);
+}
+
+/* Action icons (delete / edit) */
+.list_users li:nth-child(5),
+.list_users li:nth-child(6) {
+  display: flex;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.list_users li:nth-child(5) {
+  background: transparent;
+}
+
+.list_users li:nth-child(5):hover {
+  background: var(--danger-soft);
+}
+
+.list_users li:nth-child(6):hover {
+  background: var(--accent-soft);
+}
+
+.list_users .material-icons {
+  font-size: 20px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list_users li:nth-child(5) .material-icons {
+  color: var(--danger) !important;
+}
+
+.list_users li:nth-child(6) .material-icons {
+  color: var(--accent) !important;
+}
+
+/* Empty state, if PHP outputs no <ul> at all */
+.list_users:empty::before {
+  content: "Nenhum usuario cadastrado ainda.";
+  display: block;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-faint);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  .form_crud {
+    position: static;
+  }
+
+  .list_users ul {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .list_users li:nth-child(5),
+  .list_users li:nth-child(6) {
+    justify-content: flex-start;
+  }
+}
+
+/* =========================================================
+   Accessibility
+   ========================================================= */
+a:focus-visible,
+input:focus-visible,
+li:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
