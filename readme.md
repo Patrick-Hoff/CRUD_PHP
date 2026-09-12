@@ -22,7 +22,6 @@ Desenvolvido em **PHP + MySQL**, utilizando **Composer** e **PHP dotenv** para g
 - [Tecnologias utilizadas](#️-tecnologias-utilizadas)
 - [Estrutura do projeto](#-estrutura-do-projeto)
 - [Como rodar o projeto](#-como-rodar-o-projeto)
-- [Nota sobre segurança](#-nota-sobre-segurança-produção)
 - [Banco de dados](#️-banco-de-dados)
 - [Desenvolvedor](#-desenvolvedor)
 - [Licença](#-licença)
