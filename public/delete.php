@@ -2,7 +2,7 @@
 
 require_once "../config/database.php";
 
-$id = $_GET["id"];
+$id = $_POST["id"];
 
 $stmt = $conn->prepare("DELETE FROM users WHERE userid = ?");
 

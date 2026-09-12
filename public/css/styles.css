@@ -32,7 +32,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -60,7 +61,7 @@ main {
 
 /* A quiet page heading rendered purely in CSS, anchored above the grid */
 main::before {
-  content: "Usuarios";  
+  content: "Usuarios";
   grid-column: 1 / -1;
   font-size: 26px;
   font-weight: 800;
@@ -287,6 +288,16 @@ main::before {
 
 .list_users li:nth-child(6) .material-icons {
   color: var(--accent) !important;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Empty state, if PHP outputs no <ul> at all */

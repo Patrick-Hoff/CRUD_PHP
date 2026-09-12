@@ -39,9 +39,17 @@ $button_text = $button_text ?? "Cadastrar";
                     <li>Senha: ...</li>
                     <li>Adm: <?= $user["admin"] == 1 ? "Sim" : "Não" ?></li>
                     <li>
-                        <a href="delete.php?id=<?= $user["userid"] ?>">
-                            <i class="material-icons" style="font-size:25px;color:red">delete</i>
-                        </a>
+                        <form
+                            action="delete.php?id<?= $user["userid"] ?>"
+                            method="post"
+                            style="display: inline;"
+                            class="form-delete"
+                            onsubmit="return confirm('Excluir este usuário?')">
+                            <input type="hidden" name="id" value=<?= $user["userid"] ?>>
+                            <button type="submit" class="btn-icon">
+                                <i class="material-icons" style="font-size:25px;color:red">delete</i>
+                            </button>
+                        </form>
                     </li>
                     <li>
                         <a href="edit.php?id=<?= $user["userid"] ?>">
