@@ -1,6 +1,6 @@
 <?php
 
-require_once "database.php";
+require_once "../config/database.php";
 
 $nome = $_POST["nome"] ?? "";
 $senha = $_POST["password"] ?? "";

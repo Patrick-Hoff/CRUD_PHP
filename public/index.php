@@ -1,6 +1,6 @@
 <?php
 
-require_once "database.php";
+require_once "../config/database.php";
 
 $get_users = $conn->prepare("SELECT userid, nome AS name, isAdmin AS admin FROM users");
 
@@ -15,7 +15,6 @@ $get_users->close();
 $form_action = $form_action ?? "create.php";
 $button_text = $button_text ?? "Cadastrar";
 
-var_dump($user);
 ?>
 
 <!DOCTYPE html>

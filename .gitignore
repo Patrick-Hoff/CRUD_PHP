@@ -1,0 +1,36 @@
+credenciais
+
+.env
+.env.*
+!.env.example
+
+Dependências do Composer
+
+/vendor/
+
+Arquivos temporários do sistema
+
+.DS_Store
+Thumbs.db
+
+Arquivos temporários da IDE
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+Logs
+
+*.log
+
+Arquivos temporários
+
+*.tmp
+*.temp
+
+Cache
+
+.cache/
+tmp/
+temp/
